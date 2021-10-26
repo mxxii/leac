@@ -1,5 +1,7 @@
 # leac
 
+![lint status badge](https://github.com/mxxii/leac/workflows/lint/badge.svg)
+![test status badge](https://github.com/mxxii/leac/workflows/test/badge.svg)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/mxxii/leac/blob/main/LICENSE)
 
 Lexer / tokenizer.
