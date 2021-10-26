@@ -1,0 +1,26 @@
+{
+  "extends": "@tsconfig/node12/tsconfig.json",
+  "include": [
+    "src/**/*.ts"
+  ],
+  "compilerOptions": {
+    "outDir": "./lib"
+  },
+  "typedocOptions": {
+    "disableSources": true,
+    "entryDocument": "index.md",
+    "entryPoints": ["src/leac.ts"],
+    "githubPages": false,
+    "hideBreadcrumbs": true,
+    "includeVersion": true,
+    "readme": "none",
+    "out": "docs"
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "ESNext",
+      "esModuleInterop": true,
+      "moduleResolution": "Node"
+    }
+  }
+}
