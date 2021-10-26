@@ -3,6 +3,8 @@
 ![lint status badge](https://github.com/mxxii/leac/workflows/lint/badge.svg)
 ![test status badge](https://github.com/mxxii/leac/workflows/test/badge.svg)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/mxxii/leac/blob/main/LICENSE)
+[![npm](https://img.shields.io/npm/v/leac?logo=npm)](https://www.npmjs.com/package/leac)
+[![deno](https://img.shields.io/badge/deno.land%2Fx%2F-leac-informational?logo=deno)](https://deno.land/x/leac)
 
 Lexer / tokenizer.
 
@@ -28,8 +30,21 @@ Lexer / tokenizer.
 
 ## Install
 
+### Node
+
 ```shell
 > npm i leac
+> yarn add leac
+```
+
+```ts
+import { createLexer, Token } from 'leac';
+```
+
+### Deno
+
+```ts
+import { createLexer, Token } from 'https://deno.land/x/leac@.../leac.ts';
 ```
 
 
