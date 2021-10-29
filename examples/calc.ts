@@ -1,6 +1,6 @@
 
 // Calculator that supports metric and binary unit prefixes.
-// (Full calculator example is in my parser combinators package.)
+// (Full calculator example comes with `peberminta` parser combinators package repo.)
 
 
 import { inspect } from 'util';

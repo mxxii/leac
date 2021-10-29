@@ -8,7 +8,7 @@
 // Another option might be to use a capture group
 // and replace the token contents but that would mean
 // the token array can no longer be directly serialized
-// without procesing (adding quotes back to string tokens).
+// without processing (adding quotes back to string tokens).
 
 
 import { inspect } from 'util';
