@@ -25,7 +25,7 @@ Lexer / tokenizer.
 
 - **No streaming** - accepts a string at a time.
 
-- **Only text tokens, no arbitraty values**. It seems to be a good habit to have tokens that are *trivially* serializable back into valid input string. Don't do the parser's job. There are a couple of convenience features such as the ability to discard matches or string replacements for regular expression rules but that has to be used mindfully.
+- **Only text tokens, no arbitrary values**. It seems to be a good habit to have tokens that are *trivially* serializable back into valid input string. Don't do the parser's job. There are a couple of convenience features such as the ability to discard matches or string replacements for regular expression rules but that has to be used mindfully.
 
 
 ## Install

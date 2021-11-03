@@ -95,4 +95,4 @@ the same as [String.prototype.replace()](https://developer.mozilla.org/en-US/doc
 This will only affect the text property of an output token, not it's offset or length.
 
 Note: the regex has to be able to match the matched substring when taken out of context
-in order for replace to work - boundary/neighbourhood conditions may prevent this.
+in order for replace to work - boundary/neighborhood conditions may prevent this.
