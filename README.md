@@ -50,8 +50,8 @@ import { createLexer, Token } from 'https://deno.land/x/leac@.../leac.ts';
 
 ## Examples
 
-- [JSON](https://github.com/mxxii/leac/blob/main/examples/json.ts);
-- [Calc](https://github.com/mxxii/leac/blob/main/examples/calc.ts).
+- [JSON](https://github.com/mxxii/leac/blob/main/examples/json.ts) ([output snapshot](https://github.com/mxxii/leac/blob/main/test/snapshots/examples.ts.md#json));
+- [Calc](https://github.com/mxxii/leac/blob/main/examples/calc.ts) ([output snapshot](https://github.com/mxxii/leac/blob/main/test/snapshots/examples.ts.md#calc)).
 
 ```typescript
 const lex = createLexer([
