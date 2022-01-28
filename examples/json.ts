@@ -10,6 +10,9 @@
 // the token array can no longer be directly serialized
 // without processing (adding quotes back to string tokens).
 
+// Full JSON parser example comes with `peberminta` parser combinators package repo.
+// There, I just left quotes as a part of a single token for the parser to handle.
+
 
 import { inspect } from 'util';
 
@@ -38,8 +41,9 @@ const lexJson = createLexer([
     name: 'openQuote',
     str: '"',
     push: createLexer([
-      // Following regex can match an empty string but this is fine -
-      // empty matches are considered equal to non-matches.
+      // Following regex can match an empty string and no token will be emitted in that case -
+      // empty matches are considered as non-matches.
+      // Keep this in mind if you're thinking about discarding quotes.
       { name: 'string', regex: /(?:\\["bfnrt/\\]|\\u[a-fA-F0-9]{4}|[^"\\])*/ },
       {
         name: 'closeQuote',

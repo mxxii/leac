@@ -77,7 +77,11 @@ export type Token = {
 export interface Rule {
   /** The name of the rule, also the name of tokens produced by this rule. */
   name: string;
-  /** Matched token won't be added to the output array if this set to `true`. */
+  /**
+   * Matched token won't be added to the output array if this set to `true`.
+   *
+   * _(Think twice before using this.)_
+   * */
   discard?: boolean;
   /**
    * Switch to another lexer function after this match,
@@ -111,10 +115,13 @@ export interface RegexRule extends Rule {
   /**
    * Regular expression to match.
    *
-   * Can't have the global flag.
+   * - Can't have the global flag.
    *
-   * All regular expressions are used as sticky,
-   * you don't have to specify the sticky flag.
+   * - All regular expressions are used as sticky,
+   *   you don't have to specify the sticky flag.
+   *
+   * - Empty matches are considered as non-matches -
+   *   no token will be emitted in that case.
    */
   regex: RegExp;
   /**
@@ -142,8 +149,8 @@ function isStringRule (r: Rule): r is StringRule {
  *
  * Rules are processed in provided order, first match is taken.
  *
- * Rules can have the same name - you can have separate rules
- * for keywords and use the same name "keyword" for example.
+ * Rules can have the same name. For example, you can have
+ * separate rules for various keywords and use the same name "keyword".
  */
 export type Rules = [
   (Rule|StringRule|RegexRule),

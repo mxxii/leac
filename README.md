@@ -25,7 +25,7 @@ Lexer / tokenizer.
 
 - **No streaming** - accepts a string at a time.
 
-- **Only text tokens, no arbitrary values**. It seems to be a good habit to have tokens that are *trivially* serializable back into valid input string. Don't do the parser's job. There are a couple of convenience features such as the ability to discard matches or string replacements for regular expression rules but that has to be used mindfully.
+- **Only text tokens, no arbitrary values**. It seems to be a good habit to have tokens that are *trivially* serializable back into a valid input string. Don't do the parser's job. There are a couple of convenience features such as the ability to discard matches or string replacements for regular expression rules but that has to be used mindfully (more on this below).
 
 
 ## Install
@@ -68,6 +68,39 @@ const { tokens, offset, complete } = lex('2 + 2');
 ## API
 
 - [docs/index.md](https://github.com/mxxii/leac/blob/main/docs/index.md)
+
+
+## A word of caution
+
+It is often really tempting to rewrite token on the go. But it can be dangerous unless you are absolutely mindful of all edge cases.
+
+For example, who needs to carry string quotes around, right? Parser will only need the string content...
+
+We'll have to consider following things:
+
+- Regular expressions. Sometimes we want to match strings that can have a length *from zero* and up.
+
+- Tokens are not produced without changing the offset. If something is missing - there is no token.
+
+  If we allow a token with zero length - it will cause an infinite loop, as the same rule will be matched at the same offset, again and again.
+
+- Discardable tokens - a convenience feature that may seem harmless at a first glance.
+
+When put together, these things plus some intuition traps can lead to a broken array of tokens.
+
+Strings can be empty, which means the token can be absent. With no content and no quotes the tokens array will most likely make no sense for a parser.
+
+How to avoid potential issues:
+
+- Don't discard anything that you may need to insert back if you try to immediately serialize the tokens array to string. This means whitespace are usually safe to discard while string quotes are not (what can be considered safe will heavily depend on the grammar - you may have a language with significant spaces and insignificant quotes...);
+
+- You can introduce a higher priority rule to capture an empty string (opening quote immediately followed by closing quote) and emit a special token for that. This way empty string between quotes can't occur down the line;
+
+- Match the whole string (content and quotes) with a single regular expression, let the parser deal with it. This can actually lead to a cleaner design than trying to be clever and removing "unnecessary" parts early;
+
+- Match the whole string (content and quotes) with a single regular expression, use capture groups and [replace](https://github.com/mxxii/leac/blob/main/docs/interfaces/RegexRule.md#replace) property. This can produce a non-zero length token with empty text.
+
+Another note about quotes: If the grammar allows for different quotes and you're still willing to get rid of them early - think how you're going to unescape the string later. Make sure you carry the information about the exact string kind in the token name at least - you will need it later.
 
 
 ## What about ...?

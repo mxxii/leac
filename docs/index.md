@@ -83,8 +83,8 @@ Non-empty array of rules.
 
 Rules are processed in provided order, first match is taken.
 
-Rules can have the same name - you can have separate rules
-for keywords and use the same name "keyword" for example.
+Rules can have the same name. For example, you can have
+separate rules for various keywords and use the same name "keyword".
 
 ___
 

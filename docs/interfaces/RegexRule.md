@@ -27,6 +27,8 @@ Regex rule - looks for a regular expression match.
 
 Matched token won't be added to the output array if this set to `true`.
 
+_(Think twice before using this.)_
+
 #### Inherited from
 
 [Rule](Rule.md).[discard](Rule.md#discard)
@@ -78,10 +80,13 @@ ___
 
 Regular expression to match.
 
-Can't have the global flag.
+- Can't have the global flag.
 
-All regular expressions are used as sticky,
-you don't have to specify the sticky flag.
+- All regular expressions are used as sticky,
+  you don't have to specify the sticky flag.
+
+- Empty matches are considered as non-matches -
+  no token will be emitted in that case.
 
 ___
 
