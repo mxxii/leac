@@ -32,7 +32,7 @@ then specify `str` property as defined in [StringRule](StringRule.md).
 
 Matched token won't be added to the output array if this set to `true`.
 
-_(Think twice before using this.)_
+(_Think twice before using this._)
 
 ___
 
