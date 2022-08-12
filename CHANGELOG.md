@@ -1,8 +1,12 @@
 # Changelog
 
+## Unreleased
+
+Targeting Node.js version 14 and ES2020.
+
 ## Version 0.5.1
 
-- documentation updates.
+Documentation updates.
 
 ## Version 0.5.0
 

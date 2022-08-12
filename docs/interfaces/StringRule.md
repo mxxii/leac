@@ -66,7 +66,7 @@ ___
 • `Optional` **push**: [`Lexer`](../index.md#lexer)
 
 Switch to another lexer function after this match,
-concat it's results and continue from where it stopped.
+concatenate it's results and continue from where it stopped.
 
 #### Inherited from
 

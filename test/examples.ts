@@ -6,8 +6,7 @@ import { execFileSync } from 'child_process';
 function snapshotMacro(t: ExecutionContext, examplePath: string) {
   const stdout = execFileSync('node', [
     '--experimental-specifier-resolution=node',
-    '--loader',
-    'ts-node/esm',
+    '--loader=ts-node/esm',
     examplePath
   ]);
   t.snapshot(stdout.toString(), examplePath);

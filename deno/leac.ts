@@ -18,8 +18,7 @@ export type LexerResult = {
   /**
    * True if whole input string was processed.
    *
-   * Check this to see whether some input left
-   * untokenized.
+   * Check this to see whether some input left untokenized.
    */
   complete: boolean
 };
@@ -85,7 +84,7 @@ export interface Rule {
   discard?: boolean;
   /**
    * Switch to another lexer function after this match,
-   * concat it's results and continue from where it stopped.
+   * concatenate it's results and continue from where it stopped.
    */
   push?: Lexer;
   /**

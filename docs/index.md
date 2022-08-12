@@ -8,7 +8,7 @@
 - [Rule](interfaces/Rule.md)
 - [StringRule](interfaces/StringRule.md)
 
-### Type aliases
+### Type Aliases
 
 - [Lexer](index.md#lexer)
 - [LexerResult](index.md#lexerresult)
@@ -20,7 +20,7 @@
 
 - [createLexer](index.md#createlexer)
 
-## Type aliases
+## Type Aliases
 
 ### Lexer
 
