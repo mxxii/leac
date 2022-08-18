@@ -1,4 +1,4 @@
-# leac - v0.5.1
+# leac - v0.6.0
 
 ## Table of contents
 
