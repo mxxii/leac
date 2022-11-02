@@ -1,6 +1,5 @@
 import typescript from '@rollup/plugin-typescript';
-import { terser } from 'rollup-plugin-terser';
-import pkg from './package.json';
+import terser from '@rollup/plugin-terser';
 
 export default [
   {
@@ -8,8 +7,16 @@ export default [
     input: 'src/leac.ts',
     plugins: [typescript(), terser()],
     output: [
-      { file: pkg.main, format: 'cjs' },
-      { file: pkg.module, format: 'es' },
+      {
+        dir: 'lib',
+        format: 'es',
+        entryFileNames: '[name].mjs',
+      },
+      {
+        dir: 'lib',
+        format: 'cjs',
+        entryFileNames: '[name].cjs',
+      },
     ],
   },
 ];
