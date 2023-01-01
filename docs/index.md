@@ -55,7 +55,7 @@ Result returned by a lexer function.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `complete` | `boolean` | True if whole input string was processed.    Check this to see whether some input left untokenized. |
+| `complete` | `boolean` | True if whole input string was processed. Check this to see whether some input left untokenized. |
 | `offset` | `number` | Final offset. |
 | `tokens` | [`Token`](index.md#token)[] | Array of tokens. |
 
@@ -98,9 +98,9 @@ Token object, a result of matching an individual lexing rule.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `column` | `number` | Column number within the line in the source string (1-based).    _(Always zero if line numbers not enabled in the lexer options.)_ |
-| `len` | `number` | The length of the matched substring.    _(Might be different from the text length in case replace value  was used in a RegexRule.)_ |
-| `line` | `number` | Line number in the source string (1-based).    _(Always zero if not enabled in the lexer options.)_ |
+| `column` | `number` | Column number within the line in the source string (1-based). _(Always zero if line numbers not enabled in the lexer options.)_ |
+| `len` | `number` | The length of the matched substring. _(Might be different from the text length in case replace value was used in a RegexRule.)_ |
+| `line` | `number` | Line number in the source string (1-based). _(Always zero if not enabled in the lexer options.)_ |
 | `name` | `string` | Name of the rule produced this token. |
 | `offset` | `number` | Start index of the match in the input string. |
 | `state` | `string` | Name of the lexer containing the rule produced this token. |
@@ -118,8 +118,8 @@ Create a lexer function.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `rules` | [`Rules`](index.md#rules) | Non-empty array of lexing rules.    Rules are processed in provided order, first match is taken.    Rules can have the same name - you can have separate rules  for keywords and use the same name "keyword" for example. |
-| `state?` | `string` | The name of this lexer. Use when composing lexers.  Empty string by default. |
+| `rules` | [`Rules`](index.md#rules) | Non-empty array of lexing rules. Rules are processed in provided order, first match is taken. Rules can have the same name - you can have separate rules for keywords and use the same name "keyword" for example. |
+| `state?` | `string` | The name of this lexer. Use when composing lexers. Empty string by default. |
 | `options?` | [`Options`](index.md#options) | Lexer options object. |
 
 #### Returns
@@ -134,7 +134,7 @@ Create a lexer function.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `rules` | [`Rules`](index.md#rules) | Non-empty array of lexing rules.    Rules are processed in provided order, first match is taken.    Rules can have the same name - you can have separate rules  for keywords and use the same name "keyword" for example. |
+| `rules` | [`Rules`](index.md#rules) | Non-empty array of lexing rules. Rules are processed in provided order, first match is taken. Rules can have the same name - you can have separate rules for keywords and use the same name "keyword" for example. |
 | `options?` | [`Options`](index.md#options) | Lexer options object. |
 
 #### Returns
