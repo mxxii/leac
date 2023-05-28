@@ -1,0 +1,11 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "disableSources": true,
+  "entryDocument": "index.md",
+  "entryPoints": [ "src/leac.ts" ],
+  "githubPages": false,
+  "hideBreadcrumbs": true,
+  "includeVersion": true,
+  "readme": "none",
+  "out": "docs"
+}

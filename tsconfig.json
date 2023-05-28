@@ -6,16 +6,6 @@
   "compilerOptions": {
     "outDir": "./lib"
   },
-  "typedocOptions": {
-    "disableSources": true,
-    "entryDocument": "index.md",
-    "entryPoints": ["src/leac.ts"],
-    "githubPages": false,
-    "hideBreadcrumbs": true,
-    "includeVersion": true,
-    "readme": "none",
-    "out": "docs"
-  },
   "ts-node": {
     "compilerOptions": {
       "module": "ESNext",
