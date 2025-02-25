@@ -2,6 +2,7 @@
 
 ![lint status badge](https://github.com/mxxii/leac/workflows/lint/badge.svg)
 ![test status badge](https://github.com/mxxii/leac/workflows/test/badge.svg)
+![test coverage badge](https://img.shields.io/nycrc/mxxii/leac?config=.c8rc.json)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/mxxii/leac/blob/main/LICENSE)
 [![npm](https://img.shields.io/npm/v/leac?logo=npm)](https://www.npmjs.com/package/leac)
 [![npm](https://img.shields.io/npm/dw/leac?color=informational&logo=npm)](https://www.npmjs.com/package/leac)
@@ -81,7 +82,8 @@ const { tokens, offset, complete } = lex('2 + 2');
 
 ## API
 
-- [docs/index.md](https://github.com/mxxii/leac/blob/main/docs/index.md)
+- [v0.7.0-preview.1](https://github.com/mxxii/leac/blob/main/docs/index.md)
+- [v0.6.0](https://github.com/mxxii/leac/blob/v0.6.0/docs/index.md)
 
 
 ## Lexer design notes

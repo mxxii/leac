@@ -55,7 +55,7 @@
     "lint:eslint": "eslint .",
     "lint:md": "markdownlint-cli2",
     "lint": "npm run lint:eslint && npm run lint:md",
-    "prepublishOnly": "npm run build && npm run checkAll",
+    "prepublishOnly": "npm run build && npm run check:all",
     "test": "npm run test:ava-c8",
     "test:ava": "ava",
     "test:ava-c8": "c8 ava"
