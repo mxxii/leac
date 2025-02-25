@@ -1,7 +1,7 @@
 
 import test from 'ava';
 
-import { createLexer } from '../src/leac';
+import { createLexer } from '../src/leac.ts';
 
 
 test('state name', (t) => {
@@ -14,7 +14,7 @@ test('continue from where inner lexer had no matches', (t) => {
   const lex = createLexer([
     { name: 'a' },
     { name: 'b', push: createLexer([ { name: 'c' } ], 'B') },
-    { name: 'd' }
+    { name: 'd' },
   ], 'A');
   const result = lex('abbccd');
   t.snapshot(result, 'match all from "abbccd"');
@@ -25,7 +25,7 @@ test('pop from inner lexer', (t) => {
     { name: 'a' },
     { name: 'b', push: createLexer([ { name: 'c', pop: true } ], 'B') },
     { name: 'c' },
-    { name: 'd' }
+    { name: 'd' },
   ], 'A');
   const result = lex('abbccd');
   t.snapshot(result, 'match all from "abbccd", "c"s with different states');
@@ -37,10 +37,10 @@ test('pop from and after inner lexer', (t) => {
     {
       name: 'b',
       push: createLexer([ { name: 'c', pop: true } ], 'B'),
-      pop: true
+      pop: true,
     },
     { name: 'c' },
-    { name: 'd' }
+    { name: 'd' },
   ], 'A');
   const result = lex('abccd');
   t.snapshot(result, 'match "a", "b", "c" from "abccd" and stop');

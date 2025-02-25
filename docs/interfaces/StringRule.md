@@ -1,82 +1,143 @@
+[**leac v0.7.0-preview.1**](../index.md)
+
+***
+
 # Interface: StringRule
 
 String rule - looks for exact string match that
 can be different from the name of the rule.
 
-## Hierarchy
+## Extends
 
 - [`Rule`](Rule.md)
 
-  ↳ **`StringRule`**
-
-## Table of contents
-
-### Properties
-
-- [discard](StringRule.md#discard)
-- [name](StringRule.md#name)
-- [pop](StringRule.md#pop)
-- [push](StringRule.md#push)
-- [str](StringRule.md#str)
-
 ## Properties
 
-### discard
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Inherited from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
 
-• `Optional` **discard**: `boolean`
+<a id="discard"></a> `discard?`
+
+</td>
+<td>
+
+`boolean`
+
+</td>
+<td>
 
 Matched token won't be added to the output array if this set to `true`.
 
 (_Think twice before using this._)
 
-#### Inherited from
+</td>
+<td>
 
-[Rule](Rule.md).[discard](Rule.md#discard)
+[`Rule`](Rule.md).[`discard`](Rule.md#discard)
 
-___
+</td>
+</tr>
+<tr>
+<td>
 
-### name
+<a id="name"></a> `name`
 
-• **name**: `string`
+</td>
+<td>
+
+`string`
+
+</td>
+<td>
 
 The name of the rule, also the name of tokens produced by this rule.
 
-#### Inherited from
+</td>
+<td>
 
-[Rule](Rule.md).[name](Rule.md#name)
+[`Rule`](Rule.md).[`name`](Rule.md#name)
 
-___
+</td>
+</tr>
+<tr>
+<td>
 
-### pop
+<a id="pop"></a> `pop?`
 
-• `Optional` **pop**: `boolean`
+</td>
+<td>
+
+`boolean`
+
+</td>
+<td>
 
 Stop after this match and return.
 
-If there is a parent parser - it will continue from this point.
+If there is a parent lexer - it will continue from this point.
 
-#### Inherited from
+</td>
+<td>
 
-[Rule](Rule.md).[pop](Rule.md#pop)
+[`Rule`](Rule.md).[`pop`](Rule.md#pop)
 
-___
+</td>
+</tr>
+<tr>
+<td>
 
-### push
+<a id="push"></a> `push?`
 
-• `Optional` **push**: [`Lexer`](../index.md#lexer)
+</td>
+<td>
+
+[`Lexer`](../type-aliases/Lexer.md)
+
+</td>
+<td>
 
 Switch to another lexer function after this match,
 concatenate it's results and continue from where it stopped.
 
-#### Inherited from
+</td>
+<td>
 
-[Rule](Rule.md).[push](Rule.md#push)
+[`Rule`](Rule.md).[`push`](Rule.md#push)
 
-___
+</td>
+</tr>
+<tr>
+<td>
 
-### str
+<a id="str"></a> `str`
 
-• **str**: `string`
+</td>
+<td>
+
+`string`
+
+</td>
+<td>
 
 Specify the exact string to match
 if it is different from the name of the rule.
+
+</td>
+<td>
+
+&hyphen;
+
+</td>
+</tr>
+</tbody>
+</table>

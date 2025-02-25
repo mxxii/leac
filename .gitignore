@@ -1,3 +1,5 @@
+/.tsimp
 /lib
 /node_modules
 **/__*.*
+coverage

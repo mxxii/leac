@@ -1,11 +1,20 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "disableSources": true,
-  "entryDocument": "index.md",
+  "entryFileName": "index.md",
   "entryPoints": [ "src/leac.ts" ],
   "githubPages": false,
   "hideBreadcrumbs": true,
   "includeVersion": true,
   "readme": "none",
-  "out": "docs"
+  "out": "docs",
+  "plugin": ["typedoc-plugin-markdown"],
+  "outputFileStrategy": "members",
+  "useCodeBlocks": true,
+  "expandParameters": true,
+  "parametersFormat": "htmlTable",
+  "propertiesFormat": "htmlTable",
+  "typeDeclarationFormat": "htmlTable",
+  "indexFormat": "table",
+  "useHTMLEncodedBrackets": true,
 }

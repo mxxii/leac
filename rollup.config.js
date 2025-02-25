@@ -1,21 +1,37 @@
 import typescript from '@rollup/plugin-typescript';
-import terser from '@rollup/plugin-terser';
+import { dts } from 'rollup-plugin-dts';
+import del from 'rollup-plugin-delete';
 
 export default [
   {
     external: [],
     input: 'src/leac.ts',
-    plugins: [typescript(), terser()],
+    plugins: [typescript()],
     output: [
       {
-        dir: 'lib',
         format: 'es',
-        entryFileNames: '[name].mjs',
+        file: 'lib/leac.mjs',
       },
       {
-        dir: 'lib',
         format: 'cjs',
-        entryFileNames: '[name].cjs',
+        file: 'lib/leac.cjs',
+      },
+    ],
+  },
+  {
+    input: 'src/leac.ts',
+    plugins: [
+      dts(),
+      del({ targets: 'lib/*.d.ts', hook: 'writeBundle', verbose: true }),
+    ],
+    output: [
+      {
+        format: 'es',
+        file: 'lib/leac.d.mts',
+      },
+      {
+        format: 'cjs',
+        file: 'lib/leac.d.cts',
       },
     ],
   },

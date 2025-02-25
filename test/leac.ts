@@ -1,7 +1,7 @@
 
 import test from 'ava';
 
-import { createLexer } from '../src/leac';
+import { createLexer } from '../src/leac.ts';
 
 
 test('name should match', (t) => {
@@ -44,7 +44,7 @@ test('should replace matched groups', (t) => {
   const lex = createLexer([ {
     name: 'abc',
     regex: /(a)(b)(?<c>c)/,
-    replace: '$<c>, $2, $1'
+    replace: '$<c>, $2, $1',
   } ]);
   const result = lex('abc');
   t.snapshot(result, 'match "abc" and replace with "c, b, a"');
@@ -83,7 +83,7 @@ test('zero length match is a nonmatch', (t) => {
 test('line numbers', (t) => {
   const lex = createLexer(
     [ { name: 'a', regex: /./ }, { name: 'b', regex: /\n/ } ],
-    { lineNumbers: true }
+    { lineNumbers: true },
   );
   const result = lex('abc\n\ndef\n\n');
   t.snapshot(result, 'match all, "a", "b", "c" on line 1, "d", "e", "f" on line 3');
@@ -93,7 +93,7 @@ test('first match should be taken', (t) => {
   const lex = createLexer([
     { name: 'aa' },
     { name: 'a' },
-    { name: 'aaa' }
+    { name: 'aaa' },
   ]);
   const result = lex('aaa');
   t.snapshot(result, 'match "aa", "a" from "aaa"');
@@ -102,7 +102,7 @@ test('first match should be taken', (t) => {
 test('rules with the same name are allowed', (t) => {
   const lex = createLexer([
     { name: 'a-or-b', str: 'a' },
-    { name: 'a-or-b', str: 'b' }
+    { name: 'a-or-b', str: 'b' },
   ]);
   const result = lex('abab');
   t.snapshot(result, 'match "a", "b", "a", "b" from "abab"');

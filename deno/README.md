@@ -28,6 +28,8 @@ Lexer / tokenizer.
 
 - **Only text tokens, no arbitrary values**. It seems to be a good habit to have tokens that are *trivially* serializable back into a valid input string. Don't do the parser's job. There are a couple of convenience features such as the ability to discard matches or string replacements for regular expression rules but that has to be used mindfully (more on this below).
 
+- Pairs well with [peberminta](https://github.com/mxxii/peberminta) – parser combinators toolkit.
+
 
 ## Changelog
 
@@ -68,7 +70,9 @@ const { tokens, offset, complete } = lex('2 + 2');
 ```
 
 - [JSON](https://github.com/mxxii/leac/blob/main/examples/json.ts) ([output snapshot](https://github.com/mxxii/leac/blob/main/test/snapshots/examples.ts.md#json));
-- [Calc](https://github.com/mxxii/leac/blob/main/examples/calc.ts) ([output snapshot](https://github.com/mxxii/leac/blob/main/test/snapshots/examples.ts.md#calc)).
+- [Calc](https://github.com/mxxii/leac/blob/main/examples/calc.ts) ([output snapshot](https://github.com/mxxii/leac/blob/main/test/snapshots/examples.ts.md#calc));
+- [User-provided examples](https://github.com/mxxii/leac/issues?q=label%3Aexample);
+- *feel free to post or PR interesting compact grammar examples.*
 
 ### Published packages using `leac`
 
@@ -80,9 +84,25 @@ const { tokens, offset, complete } = lex('2 + 2');
 - [docs/index.md](https://github.com/mxxii/leac/blob/main/docs/index.md)
 
 
-## A word of caution
+## Lexer design notes
 
-It is often really tempting to rewrite token on the go. But it can be dangerous unless you are absolutely mindful of all edge cases.
+
+### Tokens are atoms
+
+Don't try to pack as much as possible into a token. If you can identify actually atomic, indivisible parts of the grammar - it will be easier to work with them in the parser.
+
+If you're
+
+- defining a very long regular expression in a token,
+- defining multiple tokens that have a notable common part,
+- breaking down a token into parts in the parser
+
+then your tokens might be too big.
+
+
+### On rewriting tokens
+
+It is often really tempting to rewrite a token on the go. But it can be dangerous unless you are absolutely mindful of all edge cases.
 
 For example, who needs to carry string quotes around, right? Parser will only need the string content...
 
@@ -108,14 +128,59 @@ How to avoid potential issues:
 
 - Match the whole string (content and quotes) with a single regular expression, let the parser deal with it. This can actually lead to a cleaner design than trying to be clever and removing "unnecessary" parts early;
 
-- Match the whole string (content and quotes) with a single regular expression, use capture groups and [replace](https://github.com/mxxii/leac/blob/main/docs/interfaces/RegexRule.md#replace) property. This can produce a non-zero length token with empty text.
+- Match the whole string (content and quotes) with a single regular expression, use capture groups and [replace](https://github.com/mxxii/leac/blob/main/docs/interfaces/ReplacementRule.md#properties) property. This can produce a non-zero length token with empty text.
 
 Another note about quotes: If the grammar allows for different quotes and you're still willing to get rid of them early - think how you're going to unescape the string later. Make sure you carry the information about the exact string kind in the token name at least - you will need it later.
 
 
-## What about ...?
+## Performance
 
-- performance - The code is very simple but I won't put any unverified assumptions here. I'd be grateful to anyone who can provide a good benchmark project to compare different lexers.
+Internal benchmarks are [available](https://github.com/mxxii/leac/tree/main/benchmarks).
+
+
+```
+> tsimp ./benchmarks/benchmark.ts
+
+[ISOBENCH ENDED] IsoBench
+[GROUP ENDED] effect of stacking
+without stacking                   - 432 177 op/s. 50 samples in 5343 ms. 1.000x (WORST)
+with stacking                      - 517 294 op/s. 50 samples in 5294 ms. 1.197x (BEST)
+[GROUP ENDED] effect of replacement
+without replacement                - 652 823 op/s. 50 samples in 5366 ms. 1.993x (BEST)
+with replacement                   - 327 504 op/s. 50 samples in 5311 ms. 1.000x (WORST)
+[GROUP ENDED] effect of line numbers
+without line numbers               - 687 916 op/s. 50 samples in 5299 ms. 1.885x (BEST)
+with line numbers                  - 364 998 op/s. 50 samples in 5343 ms. 1.000x (WORST)
+[GROUP ENDED] effect of rule type
+by names                           - 610 921 op/s. 50 samples in 5304 ms. 1.047x
+by strings                         - 595 716 op/s. 50 samples in 5431 ms. 1.021x
+by non-sticky regexes              - 583 369 op/s. 50 samples in 5344 ms. 1.000x (WORST)
+by sticky regexes                  - 601 227 op/s. 50 samples in 5321 ms. 1.031x
+by combined regex                  - 719 475 op/s. 50 samples in 5348 ms. 1.233x (BEST)
+[GROUP ENDED] constructing, not running
+from name                          - 697 850 op/s. 50 samples in 5297 ms. 1.022x
+from string                        - 683 054 op/s. 50 samples in 5276 ms. 1.000x (WORST)
+from non-sticky regex              - 1 390 579 op/s. 50 samples in 5252 ms. 2.036x
+from sticky regex                  - 5 697 033 op/s. 50 samples in 5265 ms. 8.341x (BEST)
+from non-sticky regex with replace - 1 311 587 op/s. 50 samples in 5350 ms. 1.920x
+from sticky regex with replace     - 926 344 op/s. 50 samples in 5261 ms. 1.356x
+```
+
+Trivial observations:
+
+- stacking lexers reduces the number of rules in each lexer and speeds things up a bit;
+- replacement and line numbers have runtime costs;
+- all rule types perform the same on the same trivial matches (converted to the same representation internally);
+  - combining same name rules in one regular expression rule can give slight performance boost by the cost of readability;
+- constructing from sticky regular expressions (with `y` flag) is the cheapest, as long as you don't need replacement feature;
+  - lexers aren't something you'd be constructing in volumes that make this matter, so this is a curiosity, it shouldn't be prioritized over code readability;
+
+I have no benchmark comparing with other lexers/tokenizers. I'd be grateful to anyone who can provide a good benchmark project to compare different lexers on similar tasks.
+
+Shoutout to <https://github.com/Llorx/iso-bench>.
+
+
+## What about ...?
 
 - stable release - Current release is well thought out and tested. I leave a chance that some changes might be needed based on feedback. Before version 1.0.0 this will be done without a deprecation cycle.
 

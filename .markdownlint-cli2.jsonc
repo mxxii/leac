@@ -1,12 +1,14 @@
 {
   "config": {
     "default": true,
+    "fenced-code-language": false,
     "first-line-heading": false,
     "line-length": false,
-    "no-duplicate-header": false,
-    "no-inline-html": { "allowed_elements": ["details", "summary", "div"] },
+    "no-duplicate-heading": false,
+    "no-emphasis-as-heading": false,
+    "no-inline-html": false,
     "no-multiple-blanks": { "maximum": 2 }
   },
   "globs": [ "**/*.md" ],
-  "ignores": [ "node_modules" ]
+  "gitignore": true
 }

@@ -2,17 +2,13 @@
 
 ***
 
-# Interface: RegexRule
+# Interface: ReplacementRule
 
-Regex rule - looks for a regular expression match.
+Replacement rule - [RegexRule](RegexRule.md) that also applies a replacement in the output [Token](../type-aliases/Token.md) text.
 
 ## Extends
 
-- [`Rule`](Rule.md)
-
-## Extended by
-
-- [`ReplacementRule`](ReplacementRule.md)
+- [`RegexRule`](RegexRule.md)
 
 ## Properties
 
@@ -46,7 +42,7 @@ Matched token won't be added to the output array if this set to `true`.
 </td>
 <td>
 
-[`Rule`](Rule.md).[`discard`](Rule.md#discard)
+[`RegexRule`](RegexRule.md).[`discard`](RegexRule.md#discard)
 
 </td>
 </tr>
@@ -68,7 +64,7 @@ The name of the rule, also the name of tokens produced by this rule.
 </td>
 <td>
 
-[`Rule`](Rule.md).[`name`](Rule.md#name)
+[`RegexRule`](RegexRule.md).[`name`](RegexRule.md#name)
 
 </td>
 </tr>
@@ -92,7 +88,7 @@ If there is a parent lexer - it will continue from this point.
 </td>
 <td>
 
-[`Rule`](Rule.md).[`pop`](Rule.md#pop)
+[`RegexRule`](RegexRule.md).[`pop`](RegexRule.md#pop)
 
 </td>
 </tr>
@@ -115,7 +111,7 @@ concatenate it's results and continue from where it stopped.
 </td>
 <td>
 
-[`Rule`](Rule.md).[`push`](Rule.md#push)
+[`RegexRule`](RegexRule.md).[`push`](RegexRule.md#push)
 
 </td>
 </tr>
@@ -141,6 +137,34 @@ Regular expression to match.
 
 - Empty matches are considered as non-matches -
   no token will be emitted in that case.
+
+</td>
+<td>
+
+[`RegexRule`](RegexRule.md).[`regex`](RegexRule.md#regex)
+
+</td>
+</tr>
+<tr>
+<td>
+
+<a id="replace"></a> `replace`
+
+</td>
+<td>
+
+`string`
+
+</td>
+<td>
+
+Replacement string can include patterns,
+the same as [String.prototype.replace()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#specifying_a_string_as_a_parameter).
+
+This will only affect the text property of the output [Token](../type-aliases/Token.md), not it's offset or length.
+
+Note: the regex has to be able to match the matched substring when taken out of context
+in order for replace to work - boundary/neighborhood conditions may prevent this.
 
 </td>
 <td>

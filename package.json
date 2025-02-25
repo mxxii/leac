@@ -1,6 +1,6 @@
 {
   "name": "leac",
-  "version": "0.6.0",
+  "version": "0.7.0-preview.1",
   "description": "Lexer / tokenizer",
   "keywords": [
     "lexer",
@@ -17,58 +17,74 @@
   },
   "homepage": "https://github.com/mxxii/leac",
   "author": "KillyMXI",
-  "funding": "https://ko-fi.com/killymxi",
+  "funding": "https://github.com/sponsors/KillyMXI",
   "license": "MIT",
   "exports": {
-    "import": "./lib/leac.mjs",
-    "require": "./lib/leac.cjs"
+    ".": {
+      "import": {
+        "types": "./lib/leac.d.mts",
+        "default": "./lib/leac.mjs"
+      },
+      "require": {
+        "types": "./lib/leac.d.cts",
+        "default": "./lib/leac.cjs"
+      }
+    },
+    "./package.json": "./package.json"
   },
   "type": "module",
   "main": "./lib/leac.cjs",
   "module": "./lib/leac.mjs",
-  "types": "./lib/leac.d.ts",
+  "types": "./lib/leac.d.cts",
   "files": [
     "lib"
   ],
   "scripts": {
-    "build:docs": "typedoc --plugin typedoc-plugin-markdown",
-    "build:deno": "denoify",
+    "benchmark:js": "node ./benchmarks/benchmark.js",
+    "benchmark:ts": "tsimp ./benchmarks/benchmark.ts",
+    "benchmark": "npm run benchmark:ts && npm run benchmark:js",
+    "build:docs": "typedoc",
+    "build:deno": "denoify && replace-in-file \"/\\.ts\\/index.ts/g\" \".ts\" deno/**/*.ts",
     "build:rollup": "rollup -c",
-    "build:types": "tsc --declaration --emitDeclarationOnly && rimraf lib/!(leac).d.ts",
-    "build": "npm run clean && concurrently npm:build:*",
-    "checkAll": "npm run lint && npm test",
+    "build": "npm run clean && npm run build:rollup && npm run build:docs && npm run build:deno",
+    "check:all": "npm run check:tsc && npm run lint && npm test",
+    "check:tsc": "tsc",
     "clean": "rimraf lib && rimraf docs && rimraf deno",
-    "example:calc": "npm run ts -- ./examples/calc.ts",
-    "example:json": "npm run ts -- ./examples/json.ts",
+    "example:calc": "tsimp ./examples/calc.ts",
+    "example:json": "tsimp ./examples/json.ts",
     "lint:eslint": "eslint .",
     "lint:md": "markdownlint-cli2",
-    "lint": "concurrently npm:lint:*",
+    "lint": "npm run lint:eslint && npm run lint:md",
     "prepublishOnly": "npm run build && npm run checkAll",
-    "test": "ava",
-    "ts": "node --experimental-specifier-resolution=node --loader ts-node/esm"
+    "test": "npm run test:ava-c8",
+    "test:ava": "ava",
+    "test:ava-c8": "c8 ava"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@rollup/plugin-terser": "^0.4.3",
-    "@rollup/plugin-typescript": "^11.1.1",
-    "@tsconfig/node14": "^1.0.3",
-    "@types/node": "14.18.47",
-    "@typescript-eslint/eslint-plugin": "^5.59.7",
-    "@typescript-eslint/parser": "^5.59.7",
-    "ava": "^5.3.0",
-    "concurrently": "^8.0.1",
-    "denoify": "^1.5.6",
-    "eslint": "^8.41.0",
-    "eslint-plugin-jsonc": "^2.8.0",
-    "eslint-plugin-tsdoc": "^0.2.17",
-    "markdownlint-cli2": "^0.7.1",
-    "rimraf": "^5.0.1",
-    "rollup": "^2.79.1",
-    "ts-node": "^10.9.1",
-    "tslib": "^2.5.2",
-    "typedoc": "~0.24.7",
-    "typedoc-plugin-markdown": "~3.15.3",
-    "typescript": "~4.9.5"
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@stylistic/eslint-plugin": "^4.0.1",
+    "@tsconfig/node18": "^18.2.4",
+    "@types/node": "18.19.76",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "ava": "^6.2.0",
+    "c8": "^10.1.3",
+    "denoify": "^1.6.16",
+    "eslint": "^9.21.0",
+    "eslint-plugin-jsonc": "^2.19.1",
+    "eslint-plugin-tsdoc": "^0.4.0",
+    "iso-bench": "^2.4.7",
+    "markdownlint-cli2": "^0.17.2",
+    "replace-in-file": "^8.3.0",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.34.8",
+    "rollup-plugin-delete": "^3.0.0",
+    "rollup-plugin-dts": "^6.1.1",
+    "ts-blank-space": "^0.6.0",
+    "tsimp": "^2.0.12",
+    "typedoc": "~0.27.9",
+    "typedoc-plugin-markdown": "~4.4.2",
+    "typescript": "~5.7.3",
+    "typescript-eslint": "^8.25.0"
   },
   "ava": {
     "extensions": {
@@ -78,8 +94,7 @@
       "test/**/*"
     ],
     "nodeArguments": [
-      "--loader=ts-node/esm",
-      "--experimental-specifier-resolution=node"
+      "--import=ts-blank-space/register"
     ],
     "verbose": true
   },

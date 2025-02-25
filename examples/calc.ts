@@ -5,7 +5,7 @@
 
 import { inspect } from 'util';
 
-import { createLexer } from '../src/leac';
+import { createLexer } from '../src/leac.ts';
 
 
 const lex = createLexer([
@@ -22,7 +22,7 @@ const lex = createLexer([
   {
     name: 'ws',
     regex: /\s+/,
-    discard: true
+    discard: true,
   },
   { name: 'number', regex: /(?:[0-9]|[1-9][0-9]+)(?:\.[0-9]+)?(?:[eE][-+]?[0-9]+)?(?![0-9])/ },
   { name: 'unitPrefix', regex: /(?:[yzafpnumcdh]|da|[kMGTPEZY]i?)\b/ },

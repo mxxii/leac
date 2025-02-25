@@ -16,7 +16,8 @@
 
 import { inspect } from 'util';
 
-import { createLexer, Options } from '../src/leac';
+import { createLexer } from '../src/leac.ts';
+import type { Options } from '../src/leac.ts';
 
 
 const options: Options = { lineNumbers: true };
@@ -34,7 +35,7 @@ const lexJson = createLexer([
   {
     name: 'space',
     regex: /\s+/,
-    discard: true
+    discard: true,
   },
   { name: 'number', regex: /-?(?:[0-9]|[1-9][0-9]+)(?:\.[0-9]+)?(?:[eE][-+]?[0-9]+)?\b/ },
   {
@@ -48,10 +49,10 @@ const lexJson = createLexer([
       {
         name: 'closeQuote',
         str: '"',
-        pop: true
-      }
-    ], 'string', options)
-  }
+        pop: true,
+      },
+    ], 'string', options),
+  },
 ], 'root', options);
 
 
