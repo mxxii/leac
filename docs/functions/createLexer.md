@@ -1,4 +1,4 @@
-[**leac v0.7.0-preview.1**](../index.md)
+[**leac v0.7.0**](../index.md)
 
 ***
 
@@ -10,7 +10,7 @@
 function createLexer(
    rules: Rules, 
    state?: string, 
-   options?: Options): Lexer
+   options?: Options): Lexer;
 ```
 
 Create a lexer function.
@@ -51,7 +51,7 @@ for keywords and use the same name "keyword" for example.
 <tr>
 <td>
 
-`state`?
+`state?`
 
 </td>
 <td>
@@ -69,7 +69,7 @@ Empty string by default.
 <tr>
 <td>
 
-`options`?
+`options?`
 
 </td>
 <td>
@@ -93,7 +93,7 @@ Lexer options object.
 ## Call Signature
 
 ```ts
-function createLexer(rules: Rules, options?: Options): Lexer
+function createLexer(rules: Rules, options?: Options): Lexer;
 ```
 
 Create a lexer function.
@@ -134,7 +134,7 @@ for keywords and use the same name "keyword" for example.
 <tr>
 <td>
 
-`options`?
+`options?`
 
 </td>
 <td>

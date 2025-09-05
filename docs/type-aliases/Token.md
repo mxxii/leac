@@ -1,4 +1,4 @@
-[**leac v0.7.0-preview.1**](../index.md)
+[**leac v0.7.0**](../index.md)
 
 ***
 
@@ -10,12 +10,12 @@ type Token = object;
 
 Token object, the result of matching an individual lexing rule.
 
-## Type declaration
+## Properties
 
 <table>
 <thead>
 <tr>
-<th>Name</th>
+<th>Property</th>
 <th>Type</th>
 <th>Description</th>
 </tr>

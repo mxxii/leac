@@ -4,7 +4,7 @@ import type { ExecutionContext } from 'ava';
 
 import { execFileSync } from 'child_process';
 
-export default { require: ['./_force-exit.mjs'] };
+export default { require: ['./_force-exit.ts'] };
 
 
 function snapshotMacro (t: ExecutionContext, examplePath: string) {

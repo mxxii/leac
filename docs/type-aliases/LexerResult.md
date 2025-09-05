@@ -1,4 +1,4 @@
-[**leac v0.7.0-preview.1**](../index.md)
+[**leac v0.7.0**](../index.md)
 
 ***
 
@@ -10,12 +10,12 @@ type LexerResult = object;
 
 Result returned by a [Lexer](Lexer.md).
 
-## Type declaration
+## Properties
 
 <table>
 <thead>
 <tr>
-<th>Name</th>
+<th>Property</th>
 <th>Type</th>
 <th>Description</th>
 </tr>

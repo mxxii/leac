@@ -47,13 +47,13 @@ Available here: [CHANGELOG.md](https://github.com/mxxii/leac/blob/main/CHANGELOG
 ```
 
 ```ts
-import { createLexer, Token } from 'leac';
+import { createLexer, type Token } from 'leac';
 ```
 
 ### Deno
 
 ```ts
-import { createLexer, Token } from 'https://deno.land/x/leac@.../leac.ts';
+import { createLexer, type Token } from 'https://deno.land/x/leac@.../leac.ts';
 ```
 
 
@@ -82,7 +82,7 @@ const { tokens, offset, complete } = lex('2 + 2');
 
 ## API
 
-- [v0.7.0-preview.1](https://github.com/mxxii/leac/blob/main/docs/index.md)
+- [v0.7.0](https://github.com/mxxii/leac/blob/main/docs/index.md)
 - [v0.6.0](https://github.com/mxxii/leac/blob/v0.6.0/docs/index.md)
 
 

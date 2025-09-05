@@ -1,8 +1,8 @@
-**leac v0.7.0-preview.1**
+**leac v0.7.0**
 
 ***
 
-# leac v0.7.0-preview.1
+# leac v0.7.0
 
 ## Interfaces
 
@@ -15,7 +15,7 @@
 
 ## Type Aliases
 
-| Type alias | Description |
+| Type Alias | Description |
 | ------ | ------ |
 | [Lexer](type-aliases/Lexer.md) | Lexer function. |
 | [LexerResult](type-aliases/LexerResult.md) | Result returned by a [Lexer](type-aliases/Lexer.md). |

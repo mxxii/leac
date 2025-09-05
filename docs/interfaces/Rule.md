@@ -1,4 +1,4 @@
-[**leac v0.7.0-preview.1**](../index.md)
+[**leac v0.7.0**](../index.md)
 
 ***
 

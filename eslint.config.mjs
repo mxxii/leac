@@ -35,7 +35,7 @@ export default tsEslint.config(
     rules: {
       '@stylistic/array-bracket-spacing': 'off',
       '@stylistic/no-multiple-empty-lines': ['error', { 'max': 2 }],
-      '@stylistic/quotes': ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }],
+      '@stylistic/quotes': ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': 'avoidEscape' }],
       '@stylistic/space-before-function-paren': ['error', 'always'],
       'no-var': 'error',
       'no-warning-comments': 'warn',
@@ -73,7 +73,7 @@ export default tsEslint.config(
       '@stylistic/array-bracket-spacing': 'off',
       '@stylistic/no-multiple-empty-lines': ['error', { 'max': 2 }],
       '@stylistic/object-curly-newline': ['error', { 'ObjectExpression': { 'minProperties': 3 } }],
-      '@stylistic/quotes': ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }],
+      '@stylistic/quotes': ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': 'avoidEscape' }],
       '@stylistic/space-before-function-paren': ['error', 'always'],
       'no-var': 'error',
       'no-warning-comments': 'warn',

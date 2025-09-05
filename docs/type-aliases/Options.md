@@ -1,4 +1,4 @@
-[**leac v0.7.0-preview.1**](../index.md)
+[**leac v0.7.0**](../index.md)
 
 ***
 
@@ -10,12 +10,12 @@ type Options = object;
 
 Options for a [Lexer](Lexer.md) (not many so far).
 
-## Type declaration
+## Properties
 
 <table>
 <thead>
 <tr>
-<th>Name</th>
+<th>Property</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
@@ -24,7 +24,7 @@ Options for a [Lexer](Lexer.md) (not many so far).
 <tr>
 <td>
 
-<a id="linenumbers"></a> `lineNumbers`?
+<a id="linenumbers"></a> `lineNumbers?`
 
 </td>
 <td>

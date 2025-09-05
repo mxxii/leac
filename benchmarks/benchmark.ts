@@ -1,6 +1,6 @@
 import { IsoBench } from 'iso-bench';
 
-import { createLexer, Options } from '../src/leac.ts';
+import { createLexer, type Options } from '../src/leac.ts';
 
 const bench = new IsoBench();
 await bench

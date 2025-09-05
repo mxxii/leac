@@ -1,11 +1,12 @@
 {
-  "extends": "@tsconfig/node18/tsconfig.json",
+  "extends": "@tsconfig/node20/tsconfig.json",
   "include": [
     "src/**/*.ts"
   ],
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "declaration": true,
+    "erasableSyntaxOnly": true,
     "isolatedDeclarations": true,
     "isolatedModules": true,
     "module": "ESNext",
@@ -13,7 +14,7 @@
     "noEmit": true,
     "outDir": "./lib",
     "strict": true,
-    "target": "ES2018",
+    "target": "es2020",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,

@@ -127,7 +127,7 @@ export interface RegexRule extends Rule {
 export interface ReplacementRule extends RegexRule {
   /**
    * Replacement string can include patterns,
-   * the same as [String.prototype.replace()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#specifying_a_string_as_a_parameter).
+   * the same as [String.prototype.replace()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#specifying_a_string_as_the_replacement).
    *
    * This will only affect the text property of the output {@link Token}, not it's offset or length.
    *
