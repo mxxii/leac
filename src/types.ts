@@ -28,7 +28,7 @@ export type LexerResult = {
  */
 export type Lexer = (
   str: string,
-  offset?: number
+  offset?: number,
 ) => LexerResult;
 
 /** Token object, the result of matching an individual lexing rule. */

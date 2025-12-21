@@ -22,7 +22,7 @@ import { toUnifiedRule } from './rules.ts';
 export function createLexer (
   rules: Rules,
   state?: string,
-  options?: Options
+  options?: Options,
 ): Lexer;
 
 /**
@@ -39,7 +39,7 @@ export function createLexer (
  */
 export function createLexer (
   rules: Rules,
-  options?: Options
+  options?: Options,
 ): Lexer;
 
 export function createLexer (
