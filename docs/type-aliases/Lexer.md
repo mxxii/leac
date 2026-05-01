@@ -2,7 +2,7 @@
 
 ***
 
-# Type Alias: Lexer()
+# Type Alias: Lexer
 
 ```ts
 type Lexer = (str: string, offset?: number) => LexerResult;
